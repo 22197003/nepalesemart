@@ -1,0 +1,90 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Himalayan dawn palette */
+:root {
+  --font-sans: "Mukta", Arial, sans-serif;
+  --font-display: "Yatra One", Georgia, serif;
+  --cream: 246 248 251; /* snow */
+  --burgundy: 200 16 46; /* prayer-flag red */
+  --burgundy-dark: 150 10 34;
+  --gold: 233 162 59; /* marigold */
+  --champagne: 252 236 205;
+  --ink: 20 33 61; /* night indigo */
+  --night: 20 33 61;
+  --mist: 220 230 240;
+  --glacier: 91 141 184;
+}
+@layer base {
+  body {
+    @apply bg-cream font-sans text-ink antialiased;
+  }
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-burgundy;
+  }
+  h1,
+  h2,
+  h3 {
+    @apply font-serif font-normal tracking-tight;
+  }
+}
+@layer components {
+  .btn {
+    @apply inline-flex items-center justify-center rounded-full px-6 py-3 text-sm font-bold transition-colors;
+  }
+  .btn-primary {
+    @apply btn bg-burgundy text-white hover:bg-burgundy-dark;
+  }
+  .btn-secondary {
+    @apply btn border border-night/20 bg-white text-night hover:bg-mist;
+  }
+  .btn-light {
+    @apply btn bg-white/10 text-white ring-1 ring-white/40 hover:bg-white/20;
+  }
+  .card {
+    @apply rounded-xl2 bg-white shadow-soft;
+  }
+}
+/* Five prayer-flag colours (blue, white, red, green, yellow) as a thin stripe */
+.flag-bar {
+  height: 4px;
+  background: repeating-linear-gradient(
+    90deg,
+    #1f5fae 0 40px,
+    #ffffff 40px 80px,
+    #c8102e 80px 120px,
+    #2e8b57 120px 160px,
+    #f2c230 160px 200px
+  );
+}
+@media (prefers-reduced-motion: no-preference) {
+  .flags-sway {
+    transform-origin: 50% 0;
+    animation: sway 7s ease-in-out infinite alternate;
+  }
+  @keyframes sway {
+    from {
+      transform: rotate(-0.4deg);
+    }
+    to {
+      transform: rotate(0.4deg);
+    }
+  }
+}
+
+@layer components {
+  .input {
+    @apply block w-full rounded-lg border border-night/20 bg-white px-3 py-2.5 text-ink;
+  }
+  .table {
+    @apply w-full text-left text-sm;
+  }
+  .table th,
+  .table td {
+    @apply border-b border-night/10 px-3 py-3;
+  }
+}
+button:disabled {
+  cursor: wait;
+}
