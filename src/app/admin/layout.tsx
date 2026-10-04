@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { AdminNav } from "@/components/admin-nav";
 import { requirePermission } from "@/lib/auth";
 import { can, type Permission } from "@/lib/rbac";
 import { db } from "@/lib/db";
@@ -31,33 +32,38 @@ export default async function Layout({
     where: { role: s.role },
     select: { permission: true },
   });
+  const permittedLinks = links
+    .filter(([, , p]) =>
+      can(
+        s.role,
+        p,
+        overrides.length
+          ? overrides.map((r) => r.permission as Permission)
+          : null,
+      ),
+    )
+    .map(([label, path]) => ({
+      label,
+      href: path ? `/admin/${path}` : "/admin",
+    }));
   return (
-    <div className="mx-auto grid max-w-7xl gap-6 px-4 py-8 md:grid-cols-[190px_1fr]">
-      <aside className="card h-fit p-4">
-        <h2 className="mb-4 text-2xl">Store admin</h2>
-        <nav className="flex flex-wrap gap-2 md:flex-col" aria-label="Admin">
-          {links
-            .filter(([, , p]) =>
-              can(
-                s.role,
-                p,
-                overrides.length
-                  ? overrides.map((r) => r.permission as Permission)
-                  : null,
-              ),
-            )
-            .map(([label, path]) => (
-              <Link
-                key={path}
-                className="rounded-lg px-3 py-2 hover:bg-mist"
-                href={`/admin/${path}`}
-              >
-                {label}
-              </Link>
-            ))}
-        </nav>
+    <div className="inner-page mx-auto grid max-w-7xl items-start gap-7 px-4 py-8 lg:grid-cols-[220px_minmax(0,1fr)]">
+      <aside className="rounded-2xl bg-night p-4 lg:sticky lg:top-28 lg:max-h-[calc(100vh-8rem)] lg:overflow-y-auto">
+        <div className="mb-5 border-b border-white/15 px-3 pb-5 pt-2">
+          <p className="text-xs font-bold uppercase tracking-widest text-gold-light">
+            Your workspace
+          </p>
+          <h2 className="mt-2 text-2xl text-white">Store admin</h2>
+        </div>
+        <AdminNav links={permittedLinks} />
+        <Link
+          href="/shop"
+          className="mt-5 block border-t border-white/15 px-3 pt-5 text-sm text-white/70"
+        >
+          View storefront ↗
+        </Link>
       </aside>
-      <div className="min-w-0">{children}</div>
+      <div className="min-w-0 admin-content">{children}</div>
     </div>
   );
 }

@@ -2,8 +2,12 @@ import { notFound } from "next/navigation";
 import { db } from "@/lib/db";
 import { Shell } from "@/components/ui";
 import { ActionForm } from "@/components/action-form";
-import { addToCart, toggleWishlist } from "@/app/shop-actions";
-import { formatMoney } from "@/lib/utils";
+import { toggleWishlist } from "@/app/shop-actions";
+import Link from "next/link";
+import {
+  ProductGallery,
+  ProductPurchase,
+} from "@/components/product-experience";
 export default async function Page({
   params,
 }: {
@@ -53,7 +57,7 @@ export default async function Page({
     },
   });
   if (!p) notFound();
-  const available = p.variants.filter((v) => v.stockQty > 0);
+
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Product",
@@ -75,66 +79,83 @@ export default async function Page({
           __html: JSON.stringify(jsonLd).replace(/</g, "\u003c"),
         }}
       />
-      <div className="grid gap-8 md:grid-cols-2">
-        <div className="grid gap-3">
-          {p.images.map((i) => (
-            <img
-              key={i.url}
-              src={i.url}
-              alt={i.alt}
-              className="w-full rounded-xl"
-            />
-          ))}
-        </div>
-        <div className="card space-y-5 p-6">
-          <p>{p.shortDescription}</p>
-          {available.length ? (
-            <ActionForm action={addToCart} label="Add to cart">
-              <label className="block">
-                Size / variant
-                <select className="input" name="variantId">
-                  {available.map((v) => (
-                    <option key={v.id} value={v.id}>
-                      {v.name} — {formatMoney(v.salePriceCents ?? v.priceCents)}{" "}
-                      ({v.stockQty} available)
-                    </option>
-                  ))}
-                </select>
-              </label>
-              <label className="block">
-                Quantity
-                <input
-                  className="input"
-                  type="number"
-                  name="quantity"
-                  defaultValue="1"
-                  min="1"
-                  max="99"
-                  required
-                />
-              </label>
+      <Link
+        href="/shop"
+        className="mb-6 inline-flex text-sm font-bold text-night/60 hover:text-burgundy"
+      >
+        ← Back to the collection
+      </Link>
+      <div className="grid items-start gap-8 lg:grid-cols-[1.1fr_1fr] lg:gap-14">
+        <ProductGallery images={p.images} name={p.name} />
+        <div className="card form-panel p-6 sm:p-8">
+          <p className="detail-label mb-3">A taste of home</p>
+          <p className="mb-7 text-lg leading-relaxed text-night/65">
+            {p.shortDescription}
+          </p>
+          <ProductPurchase variants={p.variants} />
+          <div className="mt-3">
+            <ActionForm
+              action={toggleWishlist}
+              label="Save / remove wishlist"
+              secondary
+            >
+              <input type="hidden" name="productId" value={p.id} />
             </ActionForm>
-          ) : (
-            <p>Out of stock</p>
-          )}
-          <ActionForm action={toggleWishlist} label="Save / remove wishlist">
-            <input type="hidden" name="productId" value={p.id} />
-          </ActionForm>
-          <p className="whitespace-pre-line">{p.description}</p>
+          </div>
+          <div className="mt-7 grid grid-cols-2 gap-5 border-t border-night/10 pt-6 text-sm">
+            <div>
+              <p className="font-bold">Delivery options</p>
+              <p className="mt-1 text-night/60">
+                Calculated at checkout for your postcode.
+              </p>
+            </div>
+            <div>
+              <p className="font-bold">Storage</p>
+              <p className="mt-1 text-night/60">
+                {p.storageType.toLowerCase().replaceAll("_", " ")}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="mt-12 grid gap-8 border-t border-night/10 pt-8 lg:grid-cols-[1.1fr_1fr] lg:gap-14">
+        <section>
+          <p className="detail-label mb-3">The details</p>
+          <h2 className="mb-4 text-3xl">About this product</h2>
+          <p className="whitespace-pre-line leading-relaxed text-night/70">
+            {p.description}
+          </p>
+        </section>
+        <div className="divide-y divide-night/10 rounded-2xl border border-night/10 bg-white px-6">
           {p.ingredients && (
-            <p>
-              <strong>Ingredients:</strong> {p.ingredients}
-            </p>
+            <details className="py-5" open>
+              <summary className="cursor-pointer font-bold">
+                Ingredients
+              </summary>
+              <p className="mt-3 text-night/65">{p.ingredients}</p>
+            </details>
           )}
           {p.allergens.length > 0 && (
-            <p>
-              <strong>Allergens:</strong> {p.allergens.join(", ")}
-            </p>
+            <details className="py-5" open>
+              <summary className="cursor-pointer font-bold">
+                Allergen information
+              </summary>
+              <p className="mt-3 text-night/65">{p.allergens.join(", ")}</p>
+            </details>
           )}
-          <p>
-            <strong>Storage:</strong> {p.storageInstructions ?? p.storageType}
-          </p>
-          {p.countryOfOrigin && <p>Country of origin: {p.countryOfOrigin}</p>}
+          <details className="py-5">
+            <summary className="cursor-pointer font-bold">
+              Storage & origin
+            </summary>
+            <p className="mt-3 text-night/65">
+              {p.storageInstructions ?? p.storageType}
+            </p>
+            {p.countryOfOrigin && (
+              <p className="mt-2 text-night/65">
+                Country of origin: {p.countryOfOrigin}
+              </p>
+            )}
+          </details>
         </div>
       </div>
       <h2 className="mt-12 text-2xl">Verified purchase reviews</h2>
@@ -149,7 +170,13 @@ export default async function Page({
           </article>
         ))
       ) : (
-        <p className="mt-4">No approved reviews yet.</p>
+        <div className="card mt-5 p-8 text-center">
+          <p className="font-bold">Be the first to share a little love.</p>
+          <p className="mt-2 text-night/60">
+            No reviews yet. Customers can leave a review after their order is
+            delivered.
+          </p>
+        </div>
       )}
     </Shell>
   );

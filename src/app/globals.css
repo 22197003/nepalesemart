@@ -88,3 +88,48 @@
 button:disabled {
   cursor: wait;
 }
+
+/* Inner-page treatments are scoped so the homepage keeps its existing design. */
+@layer components {
+  .inner-page .card {
+    @apply border border-night/10 shadow-none;
+  }
+  .inner-page .input {
+    @apply rounded-xl border-night/15 px-4 py-3 transition-colors focus:border-burgundy focus:ring-2 focus:ring-burgundy/10;
+  }
+  .inner-page .btn {
+    @apply min-h-12;
+  }
+  .inner-page .table th {
+    @apply bg-cream text-xs uppercase tracking-wider text-night/60;
+  }
+  .inner-page .table td {
+    @apply py-4;
+  }
+  .inner-page .table tbody tr:hover {
+    @apply bg-cream/60;
+  }
+  .form-panel form > button {
+    @apply w-full;
+  }
+  .detail-label {
+    @apply text-xs font-bold uppercase tracking-[0.14em] text-night/50;
+  }
+}
+.inner-page {
+  overflow-wrap: anywhere;
+}
+@media (prefers-reduced-motion: reduce) {
+  .inner-page *,
+  .inner-page *::before,
+  .inner-page *::after {
+    transition: none !important;
+  }
+}
+
+.admin-content .inner-page {
+  padding: 0;
+}
+.admin-content .table {
+  min-width: 36rem;
+}

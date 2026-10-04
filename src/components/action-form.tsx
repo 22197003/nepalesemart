@@ -6,10 +6,14 @@ export function ActionForm({
   children,
   label = "Save",
   className = "space-y-4",
+  disabled = false,
+  secondary = false,
 }: {
   action: (state: FormState, data: FormData) => Promise<FormState>;
   children: React.ReactNode;
   label?: string;
+  disabled?: boolean;
+  secondary?: boolean;
   className?: string;
 }) {
   const [state, submit, pending] = useActionState(action, {});
@@ -26,7 +30,10 @@ export function ActionForm({
           {state.message}
         </p>
       )}
-      <button disabled={pending} className="btn-primary disabled:opacity-50">
+      <button
+        disabled={pending || disabled}
+        className={`${secondary ? "btn-secondary" : "btn-primary"} disabled:cursor-not-allowed disabled:opacity-50`}
+      >
         {pending ? "Please wait…" : label}
       </button>
     </form>

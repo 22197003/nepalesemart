@@ -6,7 +6,11 @@ export default async function Page({
   searchParams: Promise<Record<string, string>>;
 }) {
   return (
-    <Shell title="Shop Nepali products">
+    <Shell
+      title="A little closer to home."
+      description="Discover Nepali pantry favourites, comforting flavours and everyday essentials."
+      eyebrow="The collection"
+    >
       <Catalog query={await searchParams} />
     </Shell>
   );

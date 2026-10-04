@@ -16,8 +16,11 @@ export default async function Page({
   });
   if (!category) notFound();
   return (
-    <Shell title={category.name}>
-      <p className="mb-4">{category.description}</p>
+    <Shell
+      title={category.name}
+      description={category.description ?? undefined}
+      eyebrow="The collection"
+    >
       <Catalog category={slug} query={await searchParams} />
     </Shell>
   );

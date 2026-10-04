@@ -9,8 +9,12 @@ export default async function Page() {
     select: { product: { select: productCardSelect } },
   });
   return (
-    <Shell title="Your wishlist">
-      <ProductGrid products={items.map((i) => i.product)} />
+    <Shell
+      title="Saved for a little later."
+      description="All your favourites, in one place."
+      eyebrow="Your wishlist"
+    >
+      <ProductGrid polished products={items.map((i) => i.product)} />
     </Shell>
   );
 }

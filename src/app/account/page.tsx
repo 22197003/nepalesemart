@@ -33,9 +33,13 @@ export default async function Page() {
     }),
   ]);
   return (
-    <Shell title={`Welcome, ${user.firstName}`}>
+    <Shell
+      title={`Welcome, ${user.firstName}`}
+      description="Your favourites, deliveries and details. All feeling a little more like home."
+      eyebrow="Your account"
+    >
       {!user.emailVerified && (
-        <div className="mb-6">
+        <div className="mb-6 rounded-2xl border border-gold/30 bg-gold-light/40 p-5">
           <ActionForm action={sendVerification} label="Send verification email">
             <p>Your email address is not verified yet.</p>
           </ActionForm>
@@ -73,7 +77,10 @@ export default async function Page() {
         <div className="card p-6">
           <h2 className="mb-4 text-2xl">Saved addresses</h2>
           {user.addresses.map((a) => (
-            <div className="mb-4" key={a.id}>
+            <div
+              className="mb-4 rounded-xl border border-night/10 bg-cream p-4"
+              key={a.id}
+            >
               <p>
                 {a.label}: {a.line1}, {a.suburb} {a.state} {a.postcode}
               </p>
