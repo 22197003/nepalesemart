@@ -33,7 +33,7 @@ export function ProductGrid({
     <div
       className={
         polished
-          ? "grid grid-cols-2 gap-3 sm:gap-6 lg:grid-cols-3"
+          ? "grid grid-cols-2 gap-3 sm:gap-5 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4"
           : "grid grid-cols-2 gap-4 md:grid-cols-4"
       }
     >
@@ -58,7 +58,7 @@ export function ProductGrid({
                   alt={p.images[0].alt}
                   className={
                     polished
-                      ? "aspect-square w-full bg-mist/30 object-cover transition-transform duration-300 motion-safe:group-hover:scale-[1.03]"
+                      ? "aspect-[4/3] w-full bg-mist/30 object-cover transition-transform duration-300 motion-safe:group-hover:scale-[1.03]"
                       : "aspect-square w-full object-cover"
                   }
                   loading="lazy"
@@ -71,7 +71,7 @@ export function ProductGrid({
               </div>
             ) : (
               <div
-                className="flex aspect-square items-center justify-center bg-mist text-5xl"
+                className={`flex ${polished ? "aspect-[4/3]" : "aspect-square"} items-center justify-center bg-mist text-5xl`}
                 aria-hidden="true"
               >
                 {polished ? (
@@ -91,23 +91,29 @@ export function ProductGrid({
               </div>
             )}
             <div
-              className={polished ? "flex flex-1 flex-col p-4 sm:p-5" : "p-4"}
+              className={polished ? "flex flex-1 flex-col p-3 sm:p-4" : "p-4"}
             >
               <h2
                 className={
                   polished
-                    ? "font-sans text-base font-bold leading-snug sm:text-lg"
+                    ? "min-h-[2.75rem] font-sans text-base font-bold leading-snug"
                     : "text-lg"
                 }
               >
                 {p.name}
               </h2>
               {polished && (
-                <p className="mt-2 line-clamp-2 text-sm leading-relaxed text-night/60">
+                <p className="mt-2 min-h-[2.5rem] line-clamp-2 text-sm leading-5 text-night/60">
                   {p.shortDescription}
                 </p>
               )}
-              <p className="mt-2 font-bold text-burgundy">
+              <p
+                className={
+                  polished
+                    ? "mt-auto pt-4 text-lg font-bold text-burgundy"
+                    : "mt-2 font-bold text-burgundy"
+                }
+              >
                 {p.variants.length > 1 && polished && (
                   <span className="mr-1 text-xs font-normal text-night/60">
                     From
@@ -116,8 +122,9 @@ export function ProductGrid({
                 {Number.isFinite(price) ? formatMoney(price) : "Unavailable"}
               </p>
               {polished && (
-                <span className="mt-auto pt-4 text-xs font-bold text-night/60">
-                  View product <span aria-hidden="true">↗</span>
+                <span className="mt-3 flex min-h-11 items-center justify-between gap-2 rounded-xl border border-night/15 px-3 py-2 text-xs font-bold text-night transition-colors group-hover:border-burgundy group-hover:bg-burgundy group-hover:text-white">
+                  {p.variants.length > 1 ? "Choose options" : "View product"}{" "}
+                  <span aria-hidden="true">→</span>
                 </span>
               )}
               {!p.variants.some((v) => v.stockQty > 0) && (
@@ -263,6 +270,29 @@ export async function Catalog({
         </div>
       </aside>
       <div className="min-w-0">
+        {!category && (
+          <nav
+            aria-label="Browse categories"
+            className="mb-5 flex gap-2 overflow-x-auto pb-3"
+          >
+            {[{ id: "", name: "All products" }, ...categories].map((c) => {
+              const active = (query.category ?? "") === c.id;
+              const params = new URLSearchParams({ ...query, page: "1" });
+              if (c.id) params.set("category", c.id);
+              else params.delete("category");
+              return (
+                <Link
+                  key={c.id}
+                  href={`?${params}`}
+                  aria-current={active ? "page" : undefined}
+                  className={`shrink-0 rounded-full border px-4 py-2.5 text-sm font-bold transition-colors ${active ? "border-night bg-night text-white" : "border-night/15 bg-white text-night/70 hover:border-burgundy hover:text-burgundy"}`}
+                >
+                  {c.name}
+                </Link>
+              );
+            })}
+          </nav>
+        )}
         <div className="mb-5 flex flex-wrap items-center justify-between gap-2">
           <p className="text-sm text-night/60">
             <strong className="text-night">{total}</strong>{" "}
