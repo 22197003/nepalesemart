@@ -108,6 +108,12 @@ export default async function RootLayout({
                 </Link>
               ))}
             </nav>
+            <Link
+              href="/image-credits"
+              className="text-xs underline underline-offset-4"
+            >
+              Sample photo credits
+            </Link>
             <p lang="ne" className="font-serif text-gold-light">
               धन्यवाद
             </p>

@@ -52,16 +52,23 @@ export function ProductGrid({
             }
           >
             {p.images[0] ? (
-              <img
-                src={p.images[0].url}
-                alt={p.images[0].alt}
-                className={
-                  polished
-                    ? "aspect-square w-full bg-mist/30 object-cover transition-transform duration-300 motion-safe:group-hover:scale-[1.03]"
-                    : "aspect-square w-full object-cover"
-                }
-                loading="lazy"
-              />
+              <div className="relative overflow-hidden">
+                <img
+                  src={p.images[0].url}
+                  alt={p.images[0].alt}
+                  className={
+                    polished
+                      ? "aspect-square w-full bg-mist/30 object-cover transition-transform duration-300 motion-safe:group-hover:scale-[1.03]"
+                      : "aspect-square w-full object-cover"
+                  }
+                  loading="lazy"
+                />
+                {p.images[0].url.startsWith("/images/demo/") && (
+                  <span className="absolute bottom-2 left-2 rounded-full bg-white/95 px-2 py-1 text-[10px] font-bold text-night">
+                    Sample photo
+                  </span>
+                )}
+              </div>
             ) : (
               <div
                 className="flex aspect-square items-center justify-center bg-mist text-5xl"

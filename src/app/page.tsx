@@ -64,10 +64,18 @@ export default async function HomePage() {
               <Link
                 key={cat.id}
                 href={`/category/${cat.slug}`}
-                className="card border-l-8 p-5 font-bold"
+                className="card flex items-center gap-3 border-l-8 p-4 font-bold"
                 style={{ borderColor: colours[i % 5] }}
               >
-                {cat.name}
+                {cat.imageUrl && (
+                  <img
+                    src={cat.imageUrl}
+                    alt=""
+                    loading="lazy"
+                    className="h-12 w-12 shrink-0 rounded-lg object-cover"
+                  />
+                )}
+                <span>{cat.name}</span>
               </Link>
             ))}
           </div>

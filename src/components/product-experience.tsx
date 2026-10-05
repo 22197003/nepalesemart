@@ -37,6 +37,14 @@ export function ProductGallery({
           </span>
         )}
       </div>
+      {current?.url.startsWith("/images/demo/") && (
+        <p className="mt-3 text-sm text-night/60">
+          Sample photo for demonstration; not actual product packaging.{" "}
+          <a href="/image-credits" className="underline">
+            Photo credits
+          </a>
+        </p>
+      )}
       {images.length > 1 && (
         <div className="mt-4 flex flex-wrap gap-3" aria-label="Product images">
           {images.map((image, index) => (

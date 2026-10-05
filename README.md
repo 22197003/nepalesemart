@@ -64,9 +64,9 @@ Open `http://localhost:3000`.
 
 Local demo logins:
 
-- Owner: `owner@example.com` / `ChangeMe!12345`
-- Staff: `staff@example.com` / `ChangeMe!12345`
-- Customer: `aarav@example.com` / `Customer!12345`
+- Owner: `owner@example.com`
+- Staff: `staff@example.com`
+- Customer: `aarav@example.com`
 
 `SEED_ADMIN_EMAIL` and `SEED_ADMIN_PASSWORD` override the owner credentials for a new seed. Re-running the demo seed does not change existing user passwords; it does refresh seeded brand/GST settings. Do not run the demo seed against a live shop.
 
@@ -155,3 +155,9 @@ Never point integration tests at production. The script routes database access t
 For hosting: connect this project to your preferred Next.js host, configure the environment variables, apply `npm run db:deploy` to the production database, create your owner, set `NEXT_PUBLIC_SITE_URL` to your actual HTTPS domain, and add the Stripe webhook endpoint. Do not place live secrets into source code or expose them using `NEXT_PUBLIC_` names.
 
 Before launch, test the payment/email/image services using your own accounts, set real delivery rules and support details, replace sample images and content, and configure database backups and monitoring.
+
+## Sample photography
+
+The demo includes local sample photos for all 15 seeded products and 19 categories/subcategories. These are representative photos and serving suggestions, not actual supplier packaging. Attribution and individual image licences are listed at `/image-credits` and in `public/images/demo/CREDITS.md`. Replace them with your own product photos before launch.
+
+For an existing development database, run `npm run db:images`. This replaces only placeholder or missing images on the known demo records, preserves custom images, and does not reseed accounts, orders, prices or inventory. It is safe to rerun. A fresh `npm run db:seed` already uses the photos.

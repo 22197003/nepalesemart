@@ -1,0 +1,182 @@
+[
+  {
+    "key": "noodles",
+    "file": "/images/demo/noodles.jpg",
+    "title": "Wai wai noodles (7758285274).jpg",
+    "author": "Devika",
+    "license": "CC BY-SA 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Wai_wai_noodles_(7758285274).jpg"
+  },
+  {
+    "key": "timur",
+    "file": "/images/demo/timur.jpg",
+    "title": "Sichuan Peppercorn (51076629).jpg",
+    "author": "Charles Haynes",
+    "license": "CC BY-SA 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Sichuan_Peppercorn_(51076629).jpg"
+  },
+  {
+    "key": "masala",
+    "file": "/images/demo/masala.jpg",
+    "title": "Garam Masala.JPG",
+    "author": "Miansari66",
+    "license": "Public domain",
+    "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+    "source": "https://commons.wikimedia.org/wiki/File:Garam_Masala.JPG"
+  },
+  {
+    "key": "tea",
+    "file": "/images/demo/tea.jpg",
+    "title": "Darjeeling, India, Darjeeling tea, Black tea.jpg",
+    "author": "Vyacheslav Argenberg",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Darjeeling,_India,_Darjeeling_tea,_Black_tea.jpg"
+  },
+  {
+    "key": "sel-roti",
+    "file": "/images/demo/sel-roti.jpg",
+    "title": "Sel roti.jpg",
+    "author": "Gaurav Dhwaj Khadka",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Sel_roti.jpg"
+  },
+  {
+    "key": "chicken-momo",
+    "file": "/images/demo/chicken-momo.jpg",
+    "title": "Chicken momo.jpg",
+    "author": "Gaurav Dhwaj Khadka",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Chicken_momo.jpg"
+  },
+  {
+    "key": "veg-momo",
+    "file": "/images/demo/veg-momo.jpg",
+    "title": "Vegetable Momos - Yak Yeti Yak 2025-07-23.jpg",
+    "author": "Andy Li",
+    "license": "CC0",
+    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "source": "https://commons.wikimedia.org/wiki/File:Vegetable_Momos_-_Yak_Yeti_Yak_2025-07-23.jpg"
+  },
+  {
+    "key": "achar",
+    "file": "/images/demo/achar.jpg",
+    "title": "Mixed Pickle (37651998895).jpg",
+    "author": "nasir khan from Dhaka, Bangladesh",
+    "license": "CC BY-SA 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Mixed_Pickle_(37651998895).jpg"
+  },
+  {
+    "key": "lentils",
+    "file": "/images/demo/lentils.jpg",
+    "title": "Red lentils.JPG",
+    "author": "No machine-readable author provided. Yuvalif assumed (based on copyright claims).",
+    "license": "Public domain",
+    "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+    "source": "https://commons.wikimedia.org/wiki/File:Red_lentils.JPG"
+  },
+  {
+    "key": "rice",
+    "file": "/images/demo/rice.jpg",
+    "title": "1121-Sella-Basmati-Rice.jpg",
+    "author": "Soniimpex",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:1121-Sella-Basmati-Rice.jpg"
+  },
+  {
+    "key": "chhurpi",
+    "file": "/images/demo/chhurpi.jpg",
+    "title": "Hard Chhurpi.jpg",
+    "author": "Sumit Surai",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Hard_Chhurpi.jpg"
+  },
+  {
+    "key": "sweets",
+    "file": "/images/demo/sweets.jpg",
+    "title": "Sweets on special day.jpg",
+    "author": "Agamani Saha",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Sweets_on_special_day.jpg"
+  },
+  {
+    "key": "puja",
+    "file": "/images/demo/puja.jpg",
+    "title": "Decorated Thali in Our Pooja Place.jpg",
+    "author": "Swaminathan",
+    "license": "CC BY 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Decorated_Thali_in_Our_Pooja_Place.jpg"
+  },
+  {
+    "key": "clothing",
+    "file": "/images/demo/clothing.jpg",
+    "title": "A Typical Nepali Dhaka Topi laid on a level surface.jpg",
+    "author": "Ramnam",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:A_Typical_Nepali_Dhaka_Topi_laid_on_a_level_surface.jpg"
+  },
+  {
+    "key": "gifts",
+    "file": "/images/demo/gifts.jpg",
+    "title": "Felt Dolls in Thamel, Kathmandu Nepal-8312.jpg",
+    "author": "Bijay Chaurasia",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Felt_Dolls_in_Thamel,_Kathmandu_Nepal-8312.jpg"
+  },
+  {
+    "key": "personal-care",
+    "file": "/images/demo/personal-care.jpg",
+    "title": "Handmade soap.jpg",
+    "author": "Malene Thyssen",
+    "license": "CC BY 2.5",
+    "licenseUrl": "https://creativecommons.org/licenses/by/2.5",
+    "source": "https://commons.wikimedia.org/wiki/File:Handmade_soap.jpg"
+  },
+  {
+    "key": "fresh-foods",
+    "file": "/images/demo/fresh-foods.jpg",
+    "title": "Kathmandu morning market 684.jpg",
+    "author": "夢の散歩",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Kathmandu_morning_market_684.jpg"
+  },
+  {
+    "key": "gundruk",
+    "file": "/images/demo/gundruk.jpg",
+    "title": "Gundruk NP.jpg",
+    "author": "Krish Dulal",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Gundruk_NP.jpg"
+  },
+  {
+    "key": "chiura",
+    "file": "/images/demo/chiura.jpg",
+    "title": "Poha.jpg",
+    "author": "Sanjay Acharya, aka Sanjay ach at en.wikipedia",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "http://creativecommons.org/licenses/by-sa/3.0/",
+    "source": "https://commons.wikimedia.org/wiki/File:Poha.jpg"
+  },
+  {
+    "key": "flour",
+    "file": "/images/demo/flour.jpg",
+    "title": "Rice flour.jpg",
+    "author": "Thamizhpparithi Maari",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Rice_flour.jpg"
+  }
+]

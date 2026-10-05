@@ -11,12 +11,13 @@
     "test": "vitest run",
     "db:migrate": "prisma migrate dev",
     "db:deploy": "prisma migrate deploy",
-    "db:seed": "node --env-file=.env --import tsx prisma/seed.ts",
+    "db:seed": "node --env-file=.env --import tsx prisma/seed.ts && npm run db:images",
     "db:studio": "prisma studio",
     "check": "prisma validate && tsc --noEmit && vitest run",
     "db:admin": "node --env-file=.env --import tsx scripts/create-admin.ts",
     "format": "prettier --write src tests scripts prisma/seed.ts",
-    "test:integration": "node scripts/integration-tests.mjs"
+    "test:integration": "node scripts/integration-tests.mjs",
+    "db:images": "node --env-file=.env --import tsx scripts/add-sample-images.ts"
   },
   "prisma": {
     "seed": "tsx prisma/seed.ts"
